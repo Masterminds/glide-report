@@ -28,7 +28,8 @@ func howOld(name string, dep *cfg.Dependency, lock *cfg.Lock, repo vcs.Repo) {
 			}
 			d, err := cache.RepoData(key)
 			if err != nil {
-				msg.Die("Unable to get cached repo data: %s", err)
+				msg.Err("Unable to get cached repo data: %s", err)
+				return
 			}
 			ref = d.DefaultBranch
 		}
